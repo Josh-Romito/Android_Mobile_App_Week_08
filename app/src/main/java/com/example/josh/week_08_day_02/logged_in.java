@@ -18,7 +18,6 @@ import java.util.Date;
 
 public class logged_in extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class logged_in extends AppCompatActivity {
         String username = preferences.getString("username", "Alice the Camel");
 
         //set the username in the edit text
-        EditText username_field = (EditText)findViewById(R.id.username_field);
+        EditText username_field = findViewById(R.id.username_field);
         username_field.setText(username);
 
         //calculate the time difference
@@ -55,8 +54,6 @@ public class logged_in extends AppCompatActivity {
     }
 
 
-
-
     @Override
     public void onRestart(){
         super.onRestart();
@@ -79,7 +76,7 @@ public class logged_in extends AppCompatActivity {
         // SO - in order to conform to the assignment instructions,
         // I had to use an additional flag to determine if we are re-opening the logged in page
         // This was necessary because, every time we restart the logged in activity,
-        // the app kicks us back to the main activity, thus calling the onStop, onPause etc methods, storing the time
+        // the app kicks us back to the main activity, thus calling the onStop, onPause etc methods, and storing the time.
         // When that happens, the time we 'left' is stored as the time we actually re-opened... hmmmmm
         editor.putBoolean("returning", false);
         editor.apply();
@@ -91,7 +88,6 @@ public class logged_in extends AppCompatActivity {
         super.onStop();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
-
 
         //save current time
         Calendar calender = Calendar.getInstance();
@@ -114,8 +110,6 @@ public class logged_in extends AppCompatActivity {
     }
 
 
-
-
     public void set_username_click(View view){
         //get username
         EditText username_field = (EditText)findViewById(R.id.username_field);
@@ -130,6 +124,7 @@ public class logged_in extends AppCompatActivity {
         username_field.setText(username);
     }
 
+
     public void calc_time_diff(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         //get time logged in
@@ -141,7 +136,6 @@ public class logged_in extends AppCompatActivity {
 
         //get the time we left the app
         String time_exited = preferences.getString("time_unfocused", "0:00");
-
 
         // TIME DIFFERENCE OPERATION
         //define a date format and variables
@@ -156,14 +150,14 @@ public class logged_in extends AppCompatActivity {
             d2 = DATE_FORMAT.parse(logged_in_time);
 
             //in milliseconds
-            long diff = d2.getTime() - d1.getTime();
+            long totalDiff = d2.getTime() - d1.getTime();
 
-            long diffSeconds = diff / 1000 % 60;
-            long diffMinutes = diff / (60 * 1000) % 60;
-            long diffHours = diff / (60 * 60 * 1000) % 24;
-            long diffDays = diff / (24 * 60 * 60 * 1000);
+            long secondsDiff = totalDiff / 1000 % 60;
+            long minutesDiff = totalDiff / (60 * 1000) % 60;
+            long hoursDiff = totalDiff / (60 * 60 * 1000) % 24;
+            long daysDiff = totalDiff / (24 * 60 * 60 * 1000);
             TextView diff_text = (TextView)findViewById(R.id.time_diff);
-            diff_text.setText(diffDays + " days, \n" + diffHours + " hours, \n" + diffMinutes + " minutes, \n" + diffSeconds + " seconds.");
+            diff_text.setText(daysDiff + " days, \n" + hoursDiff + " hours, \n" + minutesDiff + " minutes, \n" + secondsDiff + " seconds.");
 
         } catch(Exception e){
             TextView diff_text = (TextView)findViewById(R.id.time_diff);
