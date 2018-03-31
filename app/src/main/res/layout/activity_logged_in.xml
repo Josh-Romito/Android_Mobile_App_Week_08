@@ -25,6 +25,7 @@
         android:layout_marginTop="43dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +39,7 @@
         android:layout_marginTop="17dp"
         android:onClick="set_username_click"
         android:text="Set username"
+        android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_field"

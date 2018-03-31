@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,14 +35,14 @@ public class logged_in extends AppCompatActivity {
 
         //get the switch
         Switch mySwitch;
-        mySwitch = (Switch) findViewById(R.id.switch1);
+        mySwitch = findViewById(R.id.switch1);
 
 
         //attach a listener to check for changes in state
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TextView msg = (TextView)findViewById(R.id.bottom_msg);
+                TextView msg = findViewById(R.id.bottom_msg);
                 if(isChecked){
                     msg.setVisibility(View.VISIBLE);
                 }else{
@@ -91,7 +90,6 @@ public class logged_in extends AppCompatActivity {
 
         //save current time
         Calendar calender = Calendar.getInstance();
-        Date time = new Date();
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String time_unfocused = DATE_FORMAT.format(calender.getTime());
 
@@ -112,7 +110,7 @@ public class logged_in extends AppCompatActivity {
 
     public void set_username_click(View view){
         //get username
-        EditText username_field = (EditText)findViewById(R.id.username_field);
+        EditText username_field = findViewById(R.id.username_field);
         String username = username_field.getText().toString();
 
         //store username
@@ -125,13 +123,13 @@ public class logged_in extends AppCompatActivity {
     }
 
 
-    public void calc_time_diff(){
+    private void calc_time_diff(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         //get time logged in
         String logged_in_time = preferences.getString("logged_in_time", "0:00");
 
         //set text view with time logged in
-        TextView logged_in_time_view = (TextView)findViewById(R.id.logged_in_time);
+        TextView logged_in_time_view = findViewById(R.id.logged_in_time);
         logged_in_time_view.setText(logged_in_time);
 
         //get the time we left the app
@@ -140,8 +138,8 @@ public class logged_in extends AppCompatActivity {
         // TIME DIFFERENCE OPERATION
         //define a date format and variables
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date d1 = null;
-        Date d2 = null;
+        Date d1;
+        Date d2;
 
         ///try catch possible parse errors
         try{
@@ -156,11 +154,11 @@ public class logged_in extends AppCompatActivity {
             long minutesDiff = totalDiff / (60 * 1000) % 60;
             long hoursDiff = totalDiff / (60 * 60 * 1000) % 24;
             long daysDiff = totalDiff / (24 * 60 * 60 * 1000);
-            TextView diff_text = (TextView)findViewById(R.id.time_diff);
+            TextView diff_text = findViewById(R.id.time_diff);
             diff_text.setText(daysDiff + " days, \n" + hoursDiff + " hours, \n" + minutesDiff + " minutes, \n" + secondsDiff + " seconds.");
 
         } catch(Exception e){
-            TextView diff_text = (TextView)findViewById(R.id.time_diff);
+            TextView diff_text = findViewById(R.id.time_diff);
             diff_text.setText("0:00 - First log-in");
         }
     }

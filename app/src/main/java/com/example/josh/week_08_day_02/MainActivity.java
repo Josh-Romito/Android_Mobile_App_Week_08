@@ -1,6 +1,5 @@
 package com.example.josh.week_08_day_02;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -11,9 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         //if our password existed
         if(password != null) {
             //hide the second password field and label
-            EditText repeat_password = (EditText) findViewById(R.id.password_repeat);
+            EditText repeat_password = findViewById(R.id.password_repeat);
             repeat_password.setVisibility(View.GONE);
-            TextView label = (TextView)findViewById(R.id.repeat_password_label);
+            TextView label = findViewById(R.id.repeat_password_label);
             label.setVisibility(View.INVISIBLE);
 
             //show the hidden reset button
-            Button reset_button = (Button)findViewById(R.id.reset_button);
+            Button reset_button = findViewById(R.id.reset_button);
             reset_button.setVisibility(View.VISIBLE);
         }
     }
@@ -51,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void save_click(View view){
         //getting password fields
-        EditText repeat_password = (EditText)findViewById(R.id.password_repeat);
-        EditText password = (EditText)findViewById(R.id.password);
+        EditText repeat_password = findViewById(R.id.password_repeat);
+        EditText password = findViewById(R.id.password);
 
         //getting password field values
         String password_text = password.getText().toString();
@@ -88,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 // else password not correct
             } else{
                 //display error msg
-                TextView msg = (TextView)findViewById(R.id.textView);
+                TextView msg = findViewById(R.id.textView);
                 msg.setText("Wrong password - try again!");
             }
         //else a password has never been saved
@@ -114,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, logged_in.class);
                 startActivity(intent);
             }else {
-                //dispaly error msg
-                TextView msg = (TextView)findViewById(R.id.textView);
+                //display error msg
+                TextView msg = findViewById(R.id.textView);
                 msg.setText("Passwords do not match... - try again!");
             }
         }
@@ -130,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
 
         //display success msg
-        TextView msg = (TextView)findViewById(R.id.textView);
+        TextView msg = findViewById(R.id.textView);
         msg.setText("Success - your password has been reset to 'password' ");
     }
 }
