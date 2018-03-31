@@ -128,12 +128,17 @@ public class logged_in extends AppCompatActivity {
         //get time logged in
         String logged_in_time = preferences.getString("logged_in_time", "0:00");
 
+        //get the time we left the app
+        String time_exited = preferences.getString("time_unfocused", "0:00");
+
         //set text view with time logged in
         TextView logged_in_time_view = findViewById(R.id.logged_in_time);
         logged_in_time_view.setText(logged_in_time);
 
-        //get the time we left the app
-        String time_exited = preferences.getString("time_unfocused", "0:00");
+        //set the text view with time we left the page
+        TextView left_page_time = findViewById(R.id.left_page_time);
+        left_page_time.setText(time_exited);
+
 
         // TIME DIFFERENCE OPERATION
         //define a date format and variables

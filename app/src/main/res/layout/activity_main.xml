@@ -25,15 +25,15 @@
         android:id="@+id/password_repeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="267dp"
         android:layout_marginEnd="85dp"
         android:layout_marginStart="84dp"
+        android:layout_marginTop="54dp"
         android:ems="10"
         android:inputType="textPassword"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/textView"
@@ -94,14 +94,12 @@
         android:id="@+id/repeat_password_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:layout_marginEnd="219dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="35dp"
         android:text="Password Repeat:"
         app:layout_constraintBottom_toTopOf="@+id/password_repeat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        tools:text="Password Repeat:" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
