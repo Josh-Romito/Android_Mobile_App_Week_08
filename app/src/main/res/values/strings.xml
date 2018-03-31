@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Week_08_day_02</string>
+    <string name="preference_file_key">SUCASA_pref_file</string>
+</resources>
